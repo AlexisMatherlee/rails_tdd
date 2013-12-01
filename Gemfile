@@ -35,11 +35,13 @@ end
 group :test, :development do
 	gem 'turn', '<0.8.3'
 	gem 'rspec-rails'
-	gem 'capybara'
-	gem 'guard'
 	gem 'guard-rspec'
+	gem 'capybara'
 	gem 'launchy'
 end
+
+# NEED TO READ MORE TO MAKE THIS GEM WORK
+# gem 'ruby_gntp'
 
 
 # Use ActiveModel has_secure_password
