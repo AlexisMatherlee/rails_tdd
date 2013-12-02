@@ -182,7 +182,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   launchy
-  pg (= 0.15.1)
+  pg
   rails (= 4.0.1)
   rails_12factor (= 0.0.2)
   rspec-rails
