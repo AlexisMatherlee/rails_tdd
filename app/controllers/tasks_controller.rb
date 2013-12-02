@@ -8,18 +8,9 @@ class TasksController < ApplicationController
     @tasks = Task.all
   end
 
-  # GET /tasks/1
-  # GET /tasks/1.json
-  def show
-  end
-
   # GET /tasks/new
   def new
     @task = Task.new
-  end
-
-  # GET /tasks/1/edit
-  def edit
   end
 
   # POST /tasks
@@ -46,7 +37,7 @@ class TasksController < ApplicationController
         format.html { redirect_to tasks_url, notice: 'Task was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        format.html { redirect_to :back, :notice => 'There was an error updating your task.' }
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end
@@ -57,7 +48,7 @@ class TasksController < ApplicationController
   def destroy
     @task.destroy
     respond_to do |format|
-      format.html { redirect_to tasks_url }
+      format.html { redirect_to tasks_url, :notice => 'Bye, bye task.' }
       format.json { head :no_content }
     end
   end
