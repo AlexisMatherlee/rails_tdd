@@ -1,26 +1,19 @@
 <h1>Tasks</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @tasks.each do |task| %>
-      <tr>
-        <td id="title_<%= task.id %>"><%= link_to task.title, task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %> | </td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<%= render 'form' %>
+<div style="height: 150px; overflow: auto">
+  <table>
+    <tbody>
+      <% @tasks.each do |task| %>
+        <tr>
+          <td width="301px" id="title_<%= task.id %>"><%= link_to task.title, task %></td>
+          <td><%= link_to 'Edit', edit_task_path(task) %> | </td>
+          <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <br>
+
+<%= render 'form' %>

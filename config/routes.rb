@@ -1,6 +1,7 @@
 Tasks::Application.routes.draw do
   root :to => 'tasks#index'
   resources :tasks
+  get "jsontest" => 'testjson#list', format: 'json'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

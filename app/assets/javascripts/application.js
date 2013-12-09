@@ -12,5 +12,33 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require twitter/bootstrap
 //= require_tree .
+//= require angular
+//= require angular-resource
+
+angular.module('Twitter', ['ngResource']);
+
+function twitterSearch(result) {
+	alert('this is ok');
+}
+
+function TwitterCtrl($scope, $resource) {
+	$scope.twitter = $resource('http://search.twitter.com/:action',{
+		action:'search.json',
+		q:'angularjs',
+		callback:'JSON_CALLBACK'
+	},
+	{
+		get: {method:'JSONP'}
+	});
+	$scope.doSearch = function () {
+    $scope.twitterResult = $scope.twitter.get({
+    	q:$scope.searchTerm
+    });
+	}
+}
+
+(function(){
+  /* Your javascripts goes here... */
+});

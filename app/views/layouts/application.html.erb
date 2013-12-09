@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="Twitter">
 <head>
 
-	<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+	<%= stylesheet_link_tag "application" %>
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 
   <title>Tasks</title>
@@ -14,11 +14,12 @@
   <meta name="author" content="">
   <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
 
+
   <!-- Bootstrap core CSS -->
-   <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="offcanvas.css" rel="stylesheet">
+  <!-- <link href="offcanvas.css" rel="stylesheet"> -->
   <!<link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
 
 </head>
@@ -41,22 +42,32 @@
     <div class="container">
 
       <div class="col-xs-12 col-sm-9">
-          <p class="pull-right visible-xs">
-            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
-          </p>
-          <div class="jumbotron">
-            <p>
-            <%= yield %>
-            </p>
-          </div>
+        <div class="jumbotron">
+          <%= yield %>
+        </div>
+          
         </div><!--/span-->
 
       <hr>
 
-      <footer>
+      <div>
         <h5>Rails Experiment</h5>
         <p>Alexis Matherlee</p>
-      </footer>
+      </div>
+
+      <div ng-controller="TwitterCtrl">
+          <form class="form-horizontal">
+            <input type="text" ng-model="searchTerm">
+            <button class="btn" ng-click="doSearch()">
+            <i class="icon-search"></i>Search
+             </button>
+          </form>
+          <table class="table table-striped">
+            <tr ng-repeat="tweet in twitterResult.results">
+             <td>{{tweet.text}}</td>
+             </tr>
+           </table> 
+        </div>
 
     </div><!--/.container-->
 
@@ -66,8 +77,8 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <script src="offcanvas.js"></script>
+    <script src="/assets/bootstrap.min.js"></script>
+    <!-- <script src="offcanvas.js"></script> -->
 
 <% flash.each do |name, message| %>
 	<%= content_tag :div, message, :id => "flash_#{name}" %>
